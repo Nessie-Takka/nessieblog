@@ -1,6 +1,6 @@
 import styles from 'styles/contact.module.css'
 import Social from 'components/social'
-//commentout
+
 export default function Contact(){
     return(
         <div className={styles.stack}>
