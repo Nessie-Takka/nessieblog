@@ -3,7 +3,7 @@ import Image from 'next/image'
 import cube from 'images/cube.jpg'
 export default function Hero({title,subtitle,imageOn=false}){
   return(
-  <divb className={styles.flexContainer}>
+  <div className={styles.flexContainer}>
     <div className={styles.text}>
       <h1 className={styles.title}>{title}</h1>
       <p className={styles.subtitle}>{subtitle}</p>
@@ -16,6 +16,6 @@ export default function Hero({title,subtitle,imageOn=false}){
           placeholder='blur'
         />
       </figure>)}
-  </divb>
+  </div>
   )
 }
