@@ -1,12 +1,12 @@
 import styles from 'styles/contact.module.css'
 import Social from 'components/social'
 
-export default function Contact(){
-    return(
+export default function Contact() {
+    return (
         <div className={styles.stack}>
             <h3 className={styles.heading}>Contact</h3>
-            <Social iconSize="30px"/>
-            <address>mail@mail.com</address>
+            <Social iconSize="30px" />
+            <address>kirakira0603@gmail.com</address>
         </div>
     )
 }

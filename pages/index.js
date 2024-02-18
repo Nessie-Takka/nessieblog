@@ -7,17 +7,17 @@ import { getAllPosts } from "lib/api"
 import { getPlaiceholder } from "plaiceholder"
 import { eyecatchLocal } from "lib/constants"
 
-export default function Home({posts}) {
+export default function Home({ posts }) {
   return (
     <Container>
-      <Meta pageTitle="TOP"/>
-        <Hero
-        title="CUBE"
-        subtitle="アウトプットしていくサイト"
+      <Meta pageTitle="TOP" />
+      <Hero
+        title="Nessie"
+        subtitle="ポートフォリオサイト"
         imageOn
-        />
-      <Posts posts={posts}/>
-      <Pagination nextUrl="/blog" nextText="More Posts"/>
+      />
+      <Posts posts={posts} />
+      <Pagination nextUrl="/blog" nextText="More Posts" />
     </Container>
   )
 }
