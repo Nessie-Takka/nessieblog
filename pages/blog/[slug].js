@@ -12,11 +12,6 @@ import { eyecatchLocal } from "lib/constants"
 import { prevNextPost } from "lib/prev-next-post"
 import Pagination from "components/pagenation"
 
-//ADD
-import hljs from "highlight.js";
-import { load } from "cheerio";
-import "highlight.js/styles/a11y-dark.css";
-
 export default function Post({
     title,
     publish,
@@ -90,26 +85,6 @@ export async function getStaticProps(context) {
     const allSlugs = await getAllSlugs()
     const [prevPost, nextPost] = prevNextPost(allSlugs, slug)
 
-    //ADD
-    const $ = load(post.content);
-    $("div[data-filename]").each((_, elm) => {
-        $(elm).prepend(`<span>${$(elm).attr("data-filename")}</span>`);
-    });
-    $("pre code").each((_, elm) => {
-        const language = $(elm).attr("class") || "";
-        let result = { value: "", language: "" };
-        if (language == "") {
-            result = hljs.highlightAuto($(elm).text());
-        } else {
-            result = hljs.highlight($(elm).text(), {
-                language: language.replace("language-", ""),
-            });
-        }
-        $(elm).html(result.value);
-        $(elm).addClass("hljs");
-    });
-    post.content = $.html();
-    //ADDここまで
     return {
         props: {
             title: post.title,
