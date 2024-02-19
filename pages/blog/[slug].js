@@ -11,6 +11,10 @@ import Meta from "components/meta"
 import { eyecatchLocal } from "lib/constants"
 import { prevNextPost } from "lib/prev-next-post"
 import Pagination from "components/pagenation"
+//ADD
+import { load } from "cheerio"
+import hljs from "highlight.js"
+import "highlight.js/styles/github-dark-dimmed.css"
 
 export default function Post({
     title,
@@ -84,6 +88,21 @@ export async function getStaticProps(context) {
     const eyecatch = post.eyecatch ?? eyecatchLocal
     const allSlugs = await getAllSlugs()
     const [prevPost, nextPost] = prevNextPost(allSlugs, slug)
+
+    //ADD
+    const $ = load(post.content);
+    $('pre code').each((_, elm) => {
+        const result = hljs.highlightAuto($(elm).text())
+        $(elm).html(result.value)
+        $(elm).addClass('hljs')
+        $(elm).addClass('language-' + result.language)
+        $(elm).attr('data-lang', result.language)
+        $(elm).attr('data-light', result.language)
+        $(elm).attr('data-dark', result.language)
+    })
+
+    post.content = $.html();
+    //ADD
 
     return {
         props: {
