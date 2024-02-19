@@ -14,7 +14,7 @@ import Pagination from "components/pagenation"
 //ADD
 import { load } from "cheerio"
 import hljs from "highlight.js"
-import "highlight.js/styles/github-dark-dimmed.css"
+import "highlight.js/styles/github-dark.css"
 
 export default function Post({
     title,
