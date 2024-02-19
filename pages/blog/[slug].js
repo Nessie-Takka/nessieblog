@@ -57,37 +57,33 @@ export default function Post({
                     </TwoColumnSidebar>
                 </TwoColumn>
                 <Pagination
-                prevText={prevPost.title}
-                prevUrl={`/blog/${prevPost.slug}`}
-                nextText={nextPost.title}
-                nextUrl={`/blog/${nextPost.slug}`}
+                    prevText={prevPost.title}
+                    prevUrl={`/blog/${prevPost.slug}`}
+                    nextText={nextPost.title}
+                    nextUrl={`/blog/${nextPost.slug}`}
                 />
             </article>
         </Container>
     )
 }
 
-export async function getStaticPaths(){
+export async function getStaticPaths() {
     const allSlugs = await getAllSlugs()
 
     return {
-        paths: allSlugs.map(({slug})=> `/blog/${slug}`),
-        fallback:false,
+        paths: allSlugs.map(({ slug }) => `/blog/${slug}`),
+        fallback: false,
     }
 }
 
 
 export async function getStaticProps(context) {
     const slug = context.params.slug
-
     const post = await getPostBySlug(slug)
-
     const description = extractText(post.content)
-
     const eyecatch = post.eyecatch ?? eyecatchLocal
-
     const allSlugs = await getAllSlugs()
-    const[prevPost,nextPost]=prevNextPost(allSlugs,slug)
+    const [prevPost, nextPost] = prevNextPost(allSlugs, slug)
 
     return {
         props: {
