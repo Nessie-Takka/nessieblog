@@ -15,6 +15,7 @@ import Pagination from "components/pagenation"
 //ADD
 import hljs from "highlight.js";
 import { load } from "cheerio";
+import "highlight.js/styles/a11y-dark.css";
 
 export default function Post({
     title,
