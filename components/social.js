@@ -10,8 +10,8 @@ export default function Social(iconSize = 'initial') {
         <ul className={styles.list} style={{ '--icon-size': iconSize }}>
             <li>
                 <a href='https://github.com/Nessie-Takka'>
-                    <FontAwesomeIcon icon={faGithub} />
-                    <span className='sr-only'>Github</span>
+                    <FontAwesomeIcon icon={faGithub} style={{ fontSize: '40px' }} />
+                    <span className='sr-only' >Github</span>
                 </a>
             </li>
         </ul>
